@@ -32,7 +32,8 @@ gulp.task('sass', function () {
     return gulp.src('scss/style.scss')
         .pipe(plumber())
         .pipe(sourceMaps.init())
-        .pipe(sass())
+        // .pipe(sass())
+        .pipe(sass.sync().on('error', sass.logError))
         .pipe(autoprefixer({
             overrideBrowserslist: ['last 2 version'],
             cascade: false

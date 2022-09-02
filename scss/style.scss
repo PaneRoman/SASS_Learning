@@ -1,5 +1,54 @@
+$bg-color: #cccccc;
+$bg-color-block: yellow;
+$big-text: 30px;
+$small-text: 20px;
+
+
+body {
+    background-color: $bg-color;
+}
+
+ul {
+    list-style: none;
+}
+
+.block {
+    width: 500px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.block2 {
+    $bg-color-block: green;
+
+    width: 200px;
+    margin: 10px auto;
+    text-align: center;
+    font-size: $big-text;
+    background-color: $bg-color-block;
+
+    h2 {
+        font-size: $big-text;
+    }
+}
+
+.block3 {
+    width: 300px;
+    margin: 10px auto;
+    text-align: center;
+    background-color: $bg-color-block;
+    font-size: $small-text;
+
+    h2 {
+        font-size: $small-text;
+    }
+}
+
+
+
 p {
-    font-size: 50px;
+    font-size: 15px;
 }
 
 
