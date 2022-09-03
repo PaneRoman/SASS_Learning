@@ -29,7 +29,7 @@ import del from 'del';
 
 
 gulp.task('sass', function () {
-    return gulp.src('scss/style.scss')
+    return gulp.src('scss/**/*.scss')
         .pipe(plumber())
         .pipe(sourceMaps.init())
         // .pipe(sass())

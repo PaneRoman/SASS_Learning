@@ -1,7 +1,6 @@
-$bg-color: #cccccc;
-$bg-color-block: yellow;
-$big-text: 30px;
-$small-text: 20px;
+@import "variables";
+@import "test";
+@import "mixins";
 
 
 body {
@@ -11,6 +10,11 @@ body {
 ul {
     list-style: none;
 }
+
+
+@include paragraphs;
+
+
 
 .block {
     width: 500px;
@@ -25,6 +29,8 @@ ul {
     width: 200px;
     margin: 10px auto;
     text-align: center;
+    padding: 20px;
+    border: 2px solid black;
     font-size: $big-text;
     background-color: $bg-color-block;
 
@@ -33,10 +39,36 @@ ul {
     }
 }
 
+%for-block3 {
+    position: relative;
+
+    &::after {
+        content: "";
+        right: -2px;
+        top: -2px;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        background-color: $bg-color;
+        border-radius: 0 0 0 20px;
+    }
+
+    &::before {
+        content: "";
+        left: -2px;
+        top: -2px;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        background-color: $bg-color;
+        border-radius: 0 0 20px 0;
+    }
+}
+
 .block3 {
+    @extend .block2;
+    @extend %for-block3;
     width: 300px;
-    margin: 10px auto;
-    text-align: center;
     background-color: $bg-color-block;
     font-size: $small-text;
 
@@ -47,8 +79,5 @@ ul {
 
 
 
-p {
-    font-size: 15px;
-}
 
 
