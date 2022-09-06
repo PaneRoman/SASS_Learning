@@ -2,6 +2,8 @@
 @import "test";
 @import "mixins";
 
+@include paragraphs;
+
 
 body {
     background-color: $bg-color;
@@ -11,10 +13,46 @@ ul {
     list-style: none;
 }
 
+.box {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   justify-items: center; 
+}
 
-@include paragraphs;
+.svg {
+    width: 400px;
+    height: 300px;
+    border: 1px solid #000;
+    margin-bottom: 50px;
+}
 
+.diamond-wrap {
+    margin-top: 20px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+// #diamond path:nth-child(1) {
+//     stroke-dasharray: 400px;
+//     stroke-dashoffset: 400px;
+//     animation: anim-line 2s ease forwards;
+// }
+
+@for $i from 1 to 7 {
+    #diamond path:nth-child(#{$i}) {
+        // stroke-dasharray: 400px;
+        // stroke-dashoffset: 400px;
+        animation: anim-line 2s ease forwards;
+    }
+}
+    
+@keyframes anim-line {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
 
 .block {
     width: 500px;

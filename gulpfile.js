@@ -55,6 +55,12 @@ gulp.task('css', function () {
         .pipe(browserSyncServer.reload({stream: true}));
 });
 
+gulp.task('js', function () {
+    return gulp.src('js/**/*.js')
+        .pipe(gulp.dest('build/js'))
+        .pipe(browserSyncServer.reload({stream: true}));
+});
+
 gulp.task('serve', function () {
     browserSyncServer.init({
         server: "build"
@@ -63,12 +69,14 @@ gulp.task('serve', function () {
     gulp.watch("scss/**/*.scss", gulp.parallel('sass'));
     gulp.watch("*.html", gulp.parallel('html'));
     gulp.watch("css/**/*.css", gulp.parallel('css'));
+    gulp.watch("js/**/*.js", gulp.parallel('js'));
 });
 
 gulp.task('copy', function () {
     return gulp.src([
         'css/**',
-        '*.html'
+        '*.html',
+        'js/**'
     ], {
         base: '.'
     })
