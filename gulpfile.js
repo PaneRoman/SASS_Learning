@@ -29,7 +29,7 @@ import del from 'del';
 
 
 gulp.task('sass', function () {
-    return gulp.src('scss/**/*.scss')
+    return gulp.src('scss/*.scss')
         .pipe(plumber())
         .pipe(sourceMaps.init())
         // .pipe(sass())
@@ -61,6 +61,12 @@ gulp.task('js', function () {
         .pipe(browserSyncServer.reload({stream: true}));
 });
 
+gulp.task('webfonts', function () {
+    return gulp.src('webfonts/**')
+        .pipe(gulp.dest('build/webfonts'))
+        .pipe(browserSyncServer.reload({stream: true}));
+});
+
 gulp.task('serve', function () {
     browserSyncServer.init({
         server: "build"
@@ -70,13 +76,15 @@ gulp.task('serve', function () {
     gulp.watch("*.html", gulp.parallel('html'));
     gulp.watch("css/**/*.css", gulp.parallel('css'));
     gulp.watch("js/**/*.js", gulp.parallel('js'));
+    gulp.watch("webfonts/**", gulp.parallel('webfonts'));
 });
 
 gulp.task('copy', function () {
     return gulp.src([
         'css/**',
         '*.html',
-        'js/**'
+        'js/**',
+        'webfonts/**'
     ], {
         base: '.'
     })
